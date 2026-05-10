@@ -19,7 +19,8 @@ export function formatCurrency(amount: number, currency: string = "USD"): string
     maximumFractionDigits: 2,
   });
 
-  return amount < 0 ? `-${symbol}${formatted}` : `${symbol}${formatted}`;
+  // Negative amounts: symbol comes first, then the minus sign e.g. "$-50.00"
+  return amount < 0 ? `${symbol}-${formatted}` : `${symbol}${formatted}`;
 }
 
 /**
